@@ -9,12 +9,14 @@ import Card from './components/Card';
 //default function of the app page(landing page of the application)
 function App() {
   return (
-    <div className = "App">
+    <div className="App">
       <Navbar />
       <div className='container'>
         <Sidebar />
         <main className='content'>
-          <PostForm />
+          <div className='form-container'>
+            <PostForm />
+          </div>
           <div className='card-container'>
             <Card title="Post 1" description="This is the first post." />
             <Card title="Post 2" description="This is the second post." />

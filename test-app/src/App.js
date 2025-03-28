@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import PostForm from './components/PostForm';
 import Card from './components/Card';
+import MessageButton from './components/buttons';
+import BasicButtons from './components/buttons';
 
 
 //default function of the app page(landing page of the application)
@@ -22,6 +24,7 @@ function App() {
             <Card title="Post 2" description="This is the second post." />
             <Card title="Post 3" description="This is the third post." />
           </div>
+          <MessageButton />
         </main>
       </div>
     </div>

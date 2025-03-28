@@ -1,27 +1,41 @@
-import { useState } from "react"
+import React from 'react'
 
-
-export default function MessageButton(){
-    const [message, setMessage]= useState("")
-
-    const handleClick = () => {
-        setMessage("Hello Kenya. ")
-        alert(`button clicked`)
-    }
-    return(
-        <div className="buttons">
-            <button onClick={handleClick}> Click me</button>
-            {message && <p>{ message }</p>}
-            <BasicButtons />
-        </div>
+//reusable button component 
+export const CustomButton = ({ label, onClick }) => {
+    return (
+        <button
+            style={{
+                padding: "10px 20px",
+                margin: "5px",
+                backgroundColor: "#007BFF",
+                color: "white",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+            }}
+            onClick={onClick}
+        >
+            {label}
+        </button>
     )
 }
-function ClickMe() {
-    alert(`clicked me all the time!`)
+
+
+//function to show the alert message on click
+export const handleAlert = () => {
+    alert(`This is the alert message!....`)
 }
 
-function BasicButtons() {
-  return (
-     <button onClick={ClickMe}> hello</button>
-  );
+//function to rediract to the url provided
+export const handleRedirect = () => {
+    window.location.href = "/home"
 }
+
+// Predefined Functionality: Toggle State
+export const useToggle = () => {
+    const [isToggled, setIsToggled] = React.useState(false);
+    const toggle = () => setIsToggled(!isToggled);
+    return [isToggled, toggle];
+};
+
+

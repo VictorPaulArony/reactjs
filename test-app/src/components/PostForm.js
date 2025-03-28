@@ -14,12 +14,13 @@ export default function PostForm() {
         console.log("New post: ", { title, content })
         setTitle("")
         setContent("")
+        alert(`the post is created ${title}, ${content}`)
     }
 
 
 //rendering the form html
 return (
-    <form>
+    <form onSubmit={handleSubmit}>
         <h2>Create a Post</h2>
         <input
             type="text"
@@ -34,7 +35,7 @@ return (
             onChange={(e)=> setContent(e.target.value)}
             required
         ></textarea>
-        <button type="submit">POst</button>
+        <button type="submit">Post</button>
     </form>
 )
 };

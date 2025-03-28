@@ -36,7 +36,7 @@ function App() {
         <CustomButton label="Show Alert" onClick={handleAlert} />
 
         {/* Redirect Button */}
-        <CustomButton label="Redirect to Home" onClick={handleRedirect} />
+        <CustomButton label="Redirect to Home" onClick={handleRedirect("/home")} />
 
         {/* Toggle Button */}
         <CustomButton label="Toggle State" onClick={toggle} />

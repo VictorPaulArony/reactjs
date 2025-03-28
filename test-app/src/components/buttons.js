@@ -27,8 +27,10 @@ export const handleAlert = () => {
 }
 
 //function to rediract to the url provided
-export const handleRedirect = () => {
-    window.location.href = "/home"
+export const handleRedirect = (url) => {
+    return () => (
+        window.location.href = url
+    )
 }
 
 // Predefined Functionality: Toggle State

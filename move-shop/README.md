@@ -1,12 +1,119 @@
-# React + Vite
+# Movie Search Web Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based web application for searching and exploring movies using the TMDB (The Movie Database) API. Built with Vite and React.
 
-Currently, two official plugins are available:
+![Movie Search App Screenshot](./public/movie-shop.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Search movies by title
+- Display movie details including posters, ratings, and descriptions
+- Responsive design for all devices
+- Real-time search results
+- Modern UI with Tailwind CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Prerequisites
+
+Before you begin, ensure you have installed:
+- Node.js (v14.0.0 or higher)
+- npm (v6.0.0 or higher)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/victorpaularony/move-shop.git
+cd move-shop
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root directory:
+```plaintext
+VITE_TMDB_API_KEY="your_tmdb_api_key_here"
+VITE_TMDB_BASE_URL="https://api.themoviedb.org/3"
+```
+
+4. Start the development server:
+```bash
+npm run dev
+```
+
+## Environment Setup
+
+The application requires specific environment variables to function:
+
+- `VITE_TMDB_API_KEY`: Your TMDB API key (Get one from [TMDB website](https://www.themoviedb.org/documentation/api))
+- `VITE_TMDB_BASE_URL`: The TMDB API base URL
+
+## Available Scripts
+
+- `npm run dev` - Starts the development server
+- `npm run build` - Builds the app for production
+- `npm run preview` - Preview the production build locally
+- `npm run lint` - Run ESLint
+- `npm test` - Run tests (if configured)
+
+## Project Structure
+
+```
+move-shop/
+├── src/
+│   ├── components/
+│   │   ├── Search.jsx
+│   │   └── [other components]
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── .env
+├── index.html
+└── vite.config.js
+```
+
+## Technologies Used
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TMDB API](https://www.themoviedb.org/documentation/api)
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Environment Variables Not Loading**
+   - Ensure your `.env` file is in the root directory
+   - All environment variables should start with `VITE_`
+   - Restart the development server after changing environment variables
+
+2. **API Errors**
+   - Verify your TMDB API key is correct
+   - Check your internet connection
+   - Ensure you're not exceeding API rate limits
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [TMDB](https://www.themoviedb.org/) for providing the movie database API
+- [Vite](https://vitejs.dev/) for the excellent build tool
+- [React](https://reactjs.org/) for the frontend framework
+
+## Contact
+
+Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
+
+Project Link: [https://github.com/yourusername/move-shop](https://github.com/yourusername/move-shop)

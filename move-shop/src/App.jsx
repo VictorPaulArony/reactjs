@@ -4,6 +4,7 @@ import './App.css';
 import Spinner from './Components/Spinner.jsx';
 import MovieCard from './Components/MovieCard.jsx';
 import { useDebounce } from 'react-use'
+// import Appwrite from './appwrite.jsx';
 
 function App() {
 
@@ -50,6 +51,11 @@ function App() {
         return;
       }
       setMovies(data.results || []);
+
+      // if (query  && data.results.length > 0) {
+      //   await Appwrite(query, data.results[0]);
+      // }
+
     } catch (error) {
       console.error('Error fetching movies:', error);
       setErrorMessage(error.message);

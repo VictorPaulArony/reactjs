@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, } from 'react';
 import Search from './Components/Search.jsx';
 import './App.css';
 import Spinner from './Components/Spinner.jsx';
 import MovieCard from './Components/MovieCard.jsx';
+import { useDebounce } from 'react-use'
 
 function App() {
+
+  //application sates hooks
   const [movies, setMovies] = useState([]);
   const [searchItem, setSearchTerm] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isloading, setLoading] = useState(false);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+
+  useDebounce(() => setDebouncedSearchTerm(searchItem), 500, [searchItem]);
 
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const API_BASE_URL = import.meta.env.VITE_TMDB_BASE_URL;
@@ -53,7 +59,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchMovies(searchItem);
+    fetchMovies(debouncedSearchTerm);
   }, [searchItem]);
 
   return (

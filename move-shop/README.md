@@ -79,6 +79,7 @@ move-shop/
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [TMDB API](https://www.themoviedb.org/documentation/api)
+- [Appwrite](https://appwrite.io/)
 
 ## Contributing
 

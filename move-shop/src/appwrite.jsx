@@ -1,5 +1,5 @@
-import { Client } from 'appwrite';
-import { query } from 'express';
+import { Client, Databases, Query, ID } from 'appwrite';
+// import { query } from 'express';
 
 const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
@@ -19,11 +19,10 @@ const Appwrite = async(searchItem, movie) => {
         const result = await database.listDocuments(
             DATABASE_ID,
             COLLECTION_ID,
-            queries= 
             [
-                Query.equal('searchTerm', searchItem)
+                Query.equal('searchItem', searchItem)
             ])
-            if(result.documents.lenght > 0){
+            if(result.documents.length > 0){
                 const doc = result.documents[0];
                 await database.updateDocument(
                     DATABASE_ID,
@@ -37,8 +36,9 @@ const Appwrite = async(searchItem, movie) => {
                 await database.createDocument(
                     DATABASE_ID,
                     COLLECTION_ID,
+                    ID.unique(),
                     {
-                        searchTerm: searchItem,
+                        searchItem: searchItem,
                         count: 1,
                         movie_id: movie.id,
                         poster_url: `hhttps://image.tmdb.org/t/p/w500${movie.poster_path}`,
@@ -55,4 +55,21 @@ const Appwrite = async(searchItem, movie) => {
 }
 
 export default Appwrite;
+
+export const getTopSearches = async () => {
+    try {
+        const result = await database.listDocuments(
+            DATABASE_ID,
+            COLLECTION_ID,
+            [
+                Query.limit(5),
+                Query.orderDesc('count')
+            ]
+        )
+        return result.documents;
+
+    }catch (error) {
+        console.log('Error fetching movies:', error);
+    }
+}
  

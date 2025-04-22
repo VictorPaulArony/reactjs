@@ -3,8 +3,7 @@
 @layer components {
   .App {
     @apply min-h-screen w-full relative overflow-hidden;
-    @apply bg-gradient-to-br from-purple-900 via-blue-900 to-black;
-  }
+    @apply bg-gradient-to-br from-purple-950 via-blue-900 to-black;  }
 
   /* Blur Background */
   .blur-background {
@@ -14,7 +13,7 @@
   .blur-overlay {
     @apply absolute inset-0;
     @apply bg-[url('/src/assets/poster.png')] bg-center bg-cover;
-    @apply blur-xl opacity-30;
+    @apply blur-lg opacity-40;
     transform: scale(1.1);
   }
 

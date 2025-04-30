@@ -5,18 +5,72 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+
+/* Navbar background based on theme */
+.navbar.light {
+  padding: 10px;
+  background-color: #f5f5f5;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.navbar.dark {
+  padding: 10px;
+  background-color: #333;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+/* Toggle container */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
+
+/* Toggle label */
+.toggle-label {
+  margin-right: 10px;
+  color: inherit;
+}
+
+/* Hidden checkbox input */
+.toggle-input {
+  display: none;
+}
+
+/* Toggle track */
+.toggle-track {
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.toggle-track.light {
+  background-color: #ddd;
+}
+
+.toggle-track.dark {
+  background-color: #555;
+}
+
+/* Toggle thumb */
+.toggle-thumb {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  transition: left 0.3s;
+}
+
+.toggle-thumb.light {
+  left: 1px;
+}
+
+.toggle-thumb.dark {
+  left: 20px;
+}
+
 
 @keyframes logo-spin {
   from {

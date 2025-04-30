@@ -1,13 +1,8 @@
 import React from 'react';
-import { useTheme } from 'next-themes';
-import '../App.css';
+import { useTheme } from '../context/ThemeContext';
 
 function Navbar() {
-  const { theme, setTheme } = useTheme();
-
-  const handleToggle = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className={`navbar ${theme}`}>
@@ -16,12 +11,12 @@ function Navbar() {
         <input
           type="checkbox"
           checked={theme === 'dark'}
-          onChange={handleToggle}
+          onChange={toggleTheme}
           className="toggle-input"
         />
-        <div className={`toggle-track ${theme}`}>
-          <div className={`toggle-thumb ${theme}`}></div>
-        </div>
+        <span className={`toggle-switch ${theme}`}>
+          <span className={`toggle-slider ${theme}`}></span>
+        </span>
       </label>
     </nav>
   );

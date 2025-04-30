@@ -1,60 +1,49 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useTheme } from 'next-themes';
-import './App.css'
+import { ThemeProvider, useTheme } from './context/ThemeContext';
+import './App.css';
 import Navbar from './component/Navbar';
 
-
-
-function App() {
+// Main app content that uses the theme
+const AppContent = () => {
   const widgetContainerRef = useRef(null);
   const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const widgetRef = useRef(null);
-  const scriptRef = useRef(null);
 
-  // Only run on client side
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  // Function to create the widget with the current theme
   const createWidget = async () => {
     try {
-      // Clean up any existing widget
       if (widgetRef.current && widgetContainerRef.current) {
         widgetContainerRef.current.innerHTML = "";
         widgetRef.current = null;
       }
 
-      // Determine the theme to use
-      const currentTheme = theme === "dark" ? "dark" : "light";
-
-      // Load TradingView script dynamically
       if (!window.TradingView) {
         const script = document.createElement("script");
         script.src = "https://s3.tradingview.com/tv.js";
         script.async = true;
-
-        // Wait for the script to load
+        
         await new Promise((resolve) => {
           script.onload = () => resolve();
           document.body.appendChild(script);
         });
       }
 
-      // Create the widget with the current theme
       if (window.TradingView && widgetContainerRef.current) {
         widgetRef.current = new window.TradingView.widget({
           container_id: widgetContainerRef.current.id,
           width: "100%",
           height: 500,
-          symbol: "NASDAQ:AAPL", // Default symbol
+          symbol: "NASDAQ:AAPL",
           interval: "D",
           timezone: "Etc/UTC",
-          theme: theme === "dark" ? "dark" : "light",
+          theme: theme,
           style: "1",
           locale: "en",
-          toolbar_bg: theme === "dark" ? "dark" : "light",
+          toolbar_bg: theme === 'dark' ? '#1e222d' : '#f1f3f6',
           enable_publishing: false,
           allow_symbol_change: true,
           hide_side_toolbar: false,
@@ -65,13 +54,11 @@ function App() {
     }
   };
 
-  // Create or recreate the widget when the theme changes
   useEffect(() => {
     if (mounted) {
       createWidget();
     }
-
-    // Cleanup on unmount
+    
     return () => {
       if (widgetContainerRef.current) {
         widgetContainerRef.current.innerHTML = "";
@@ -79,24 +66,29 @@ function App() {
     };
   }, [mounted, theme]);
 
-  // Show a placeholder while loading
   if (!mounted) {
     return (
-      <div className="w-full h-[500px] bg-muted/20 flex items-center justify-center">
-        <p className="text-muted-foreground">Loading chart...</p>
+      <div className="loading-placeholder">
+        <p>Loading chart...</p>
       </div>
     );
   }
 
-  return(
-    <div>
-      < Navbar />
-      <div id="tradingview-widget" ref={widgetContainerRef} className="w-full h-[500px]"></div>
+  return (
+    <div className={theme}>
+      <Navbar />
+      <div id="tradingview-widget" ref={widgetContainerRef}></div>
     </div>
-  ) 
-  
-}
+  );
+};
 
-export default App
+// Main App component that provides the theme context
+const App = () => {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+};
 
-
+export default App;

@@ -6,7 +6,9 @@ export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light');
   
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    // Check for saved theme in localStorage or prefer user's OS preference
+    const savedTheme = localStorage.getItem('theme') || 
+                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     setTheme(savedTheme);
     document.documentElement.className = savedTheme;
   }, []);

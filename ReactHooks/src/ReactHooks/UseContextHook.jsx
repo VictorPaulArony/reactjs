@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import {ThemeContext} from "../context/ThemeContext";
 
+
+//custom hook(basic useContext hook)
 const UseContextHook = () => {
 
+    const { theme, setTheme } = useContext(ThemeContext)
     return (
-        <div>
-            <h1>useContext</h1>
-        </div>
+        <>
+            <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+                Toggle to {theme === "light" ? "dark" : "light"}
+            </button>
+        </>
     );
-}
 
+}
 export default UseContextHook;

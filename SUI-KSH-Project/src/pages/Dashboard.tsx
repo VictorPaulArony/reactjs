@@ -86,7 +86,7 @@ const Dashboard = () => {
               </h3>
             </div>
           </div>
-        </div>
+        </div> In production, this would fetch from external APIs or oracles
         
         <div className="bg-white rounded-lg border border-gray-200 p-6 shadow-sm">
           <div className="flex items-center">

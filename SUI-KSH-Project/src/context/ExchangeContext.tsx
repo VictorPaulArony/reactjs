@@ -1,5 +1,6 @@
 "use client"
 
+// context for exchange management 
 import type React from "react"
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
 import { toast } from "react-hot-toast"
@@ -223,7 +224,6 @@ export const ExchangeProvider: React.FC<{ children: ReactNode }> = ({ children }
           amount,
           fromAddress,
           toAddress,
-          exchangeRates["SUI-KSH"].rate,
         )
 
         const newTransaction: Transaction = {

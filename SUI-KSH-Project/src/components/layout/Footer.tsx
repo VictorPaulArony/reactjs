@@ -1,5 +1,6 @@
-import React from 'react';
+// import React from 'react';
 
+//component to display the footer of the application
 const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-200 py-4 px-6">

@@ -1,8 +1,9 @@
 "use client"
 
+//component to create a price alert modal form 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { X, Bell, AlertTriangle } from "lucide-react"
 import { useExchange } from "../../context/ExchangeContext"
 import type { ExchangePair, AlertCondition } from "../../types"
@@ -22,7 +23,7 @@ const PriceAlertModal = ({ isOpen, onClose, defaultPair = "SUI-KSH" }: PriceAler
   const [error, setError] = useState<string>("")
 
   // Set a default threshold based on current rate
-  useState(() => {
+  useEffect(() => {
     const currentRate = exchangeRates[defaultPair].rate
     setThreshold(currentRate.toFixed(defaultPair === "SUI-KSH" ? 2 : 6))
   }, [defaultPair, exchangeRates])

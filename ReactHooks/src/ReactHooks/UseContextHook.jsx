@@ -5,10 +5,10 @@ import {ThemeContext} from "../context/ThemeContext";
 //custom hook(basic useContext hook)
 const UseContextHook = () => {
 
-    const { theme, setTheme } = useContext(ThemeContext)
+    const { theme, themeToggler } = useContext(ThemeContext)
     return (
         <>
-            <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+            <button onClick={themeToggler}>
                 Toggle to {theme === "light" ? "dark" : "light"}
             </button>
         </>

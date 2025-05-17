@@ -1,34 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useReducer } from 'react'
 import './App.css'
+import CounterDisplay from './components/CounterDisplay';
+import CounterButtons from './components/CounterButtons';
+import Reducer, { initialState } from './components/Reducer';
+import FormReducer, { initialStates } from './components/FormReducer';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [state, dispatch] = useReducer(Reducer, initialState)
+  const [counter, setCounter] = useReducer(FormReducer, initialStates);
 
+  const handleNum = () => {
+    setCounter( {type: 'increment_num'});
+  }
+
+  const handleStr = (e) => {
+    setCounter({
+      type: 'increment_str',
+      nextNum: e.target.value
+    })
+    
+  }
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App" style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1>React useReducer Counter</h1>
+      <CounterDisplay count={state.count} />
+      <CounterButtons dispatch={dispatch} />
+      <input
+        value= {counter.nextNum}
+        onChange={handleStr}
+      />
+
+      <button
+        onClick={handleNum}
+      >increment</button>
+      <p> String: {counter.str} </p>
+      <p> Number: {counter.num}</p>
+    </div>
   )
 }
 

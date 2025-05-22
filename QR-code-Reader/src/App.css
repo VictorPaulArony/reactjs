@@ -40,3 +40,30 @@
 .read-the-docs {
   color: #888;
 }
+
+.wrapper {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+textarea {
+  width: 100%;
+  margin-top: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.copy {
+  background-color: #4caf50;
+  color: white;
+}
+
+img {
+  margin-top: 10px;
+  max-width: 100%;
+}

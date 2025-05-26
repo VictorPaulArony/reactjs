@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 
 // You can use a Vite environment variable here for safety
-const API_KEY = '65d0ff86e61b46cdd8afa055aeb20a69'; 
+
+const API_KEY = import.meta.env.VITE_API_KEY;
+console.log(API_KEY)
+
 
 function App() {
   const [city, setCity] = useState('');
